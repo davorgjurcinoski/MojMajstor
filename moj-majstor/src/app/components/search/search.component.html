@@ -1,0 +1,23 @@
+<div class="master-list">
+    <div class="filters">
+      <select [(ngModel)]="selectedCategory">
+        <option value="">Сите Категории</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+      <select [(ngModel)]="selectedMunicipality">
+        <option value="">Сите Општини</option>
+        <option *ngFor="let municipality of municipalities" [value]="municipality">{{ municipality }}</option>
+      </select>
+    </div>
+  
+    <div class="master-cards">
+      <div class="master-card" *ngFor="let master of filteredMasters">
+        <h3>{{ master.name }}</h3>
+        <p>Категорија: {{ master.category }}</p>
+        <p>Општина: {{ master.municipality }}</p>
+        <p>Телефон: {{ master.phone }}</p>
+        <button (click)="showMoreInfo()">Повеќе информации</button>
+      </div>
+    </div>
+  </div>
+  

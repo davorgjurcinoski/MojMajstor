@@ -1,0 +1,31 @@
+<div class="profile-container">
+    <h2>Профил</h2>
+    <div class="profile-info">
+      <label>Корисничко име:</label>
+      <p>{{ username }}</p>
+    </div>
+    <div class="profile-info">
+      <label>Email:</label>
+      <p>{{ email }}</p>
+    </div>
+    <div class="profile-info">
+      <label>Адреса:</label>
+      <p>{{ address }}</p>
+    </div>
+    <div class="profile-info">
+      <label>Датум на раѓање:</label>
+      <p>{{ dateOfBirth }}</p>
+    </div>
+    <div class="profile-info">
+      <label>Општина:</label>
+      <p>{{ municipality }}</p>
+    </div>
+    <div class="profile-info">
+      <label>Телефонски број:</label>
+      <p>{{ phoneNumber }}</p>
+    </div>
+
+    <button (click)="saveChanges()" class="save-button">Зачувај промени</button>
+
+  </div>
+  

@@ -1,0 +1,49 @@
+<div class="servicer-container">
+    <h2>Сервисер</h2>
+    <div class="servicer-info">
+      <label>Име:</label>
+      <p>{{ name }}</p>
+    </div>
+    <div class="servicer-info">
+      <label>Email:</label>
+      <p>{{ email }}</p>
+    </div>
+    <div class="servicer-info">
+      <label>Мобилен телефон:</label>
+      <p>{{ mobile }}</p>
+    </div>
+    <div class="servicer-info">
+      <label>Категорија:</label>
+      <p>{{ category }}</p>
+    </div>
+    <div class="servicer-info">
+      <label>Општина:</label>
+      <p>{{ municipality }}</p>
+    </div>
+    <div class="servicer-info">
+      <label>Краток опис:</label>
+      <p>{{ description }}</p>
+    </div>
+    <div class="servicer-info">
+      <label>Просечна оцена:</label>
+      <p>{{ averageRating }}</p>
+    </div>
+  
+    <h3>Напиши коментар и оцена</h3>
+    <div class="comment-section">
+      <textarea [(ngModel)]="newComment" placeholder="Вашиот коментар"></textarea>
+      <label>Оцена:</label>
+      <select [(ngModel)]="newRating">
+        <option *ngFor="let rating of ratings" [value]="rating">{{ rating }}</option>
+      </select>
+      <button (click)="addComment()">Додади коментар</button>
+    </div>
+  
+    <h3>Коментари и оцени</h3>
+    <div *ngFor="let comment of comments" class="comment">
+      <p><strong>{{ comment.username }}</strong>:</p>
+      <p>{{ comment.text }}</p>
+      <p>Оцена: {{ comment.rating }}</p>
+    </div>
+  </div>
+  

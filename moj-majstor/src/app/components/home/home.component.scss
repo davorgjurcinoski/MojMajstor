@@ -1,0 +1,39 @@
+/* Welcome Section Styles */
+.welcome-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 80vh; /* Full viewport height */
+    background-color: #f0f4f8; /* Light background color */
+    padding: 2rem;
+  }
+  
+  .welcome-section h1 {
+    font-size: 2.5rem;
+    color: #007bff; /* Blue color */
+    margin-bottom: 1rem;
+  }
+  
+  .welcome-section .description {
+    font-size: 1.2rem;
+    color: #333; /* Dark text color */
+    margin-bottom: 2rem;
+  }
+  
+  .find-master-button {
+    font-size: 1.2rem;
+    color: #ffffff;
+    background-color: #007bff; /* Blue color */
+    border: none;
+    border-radius: 25px; /* Rounded corners */
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .find-master-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
