@@ -1,31 +1,48 @@
 <div class="profile-container">
-    <h2>Профил</h2>
-    <div class="profile-info">
-      <label>Корисничко име:</label>
-      <p>{{ username }}</p>
-    </div>
-    <div class="profile-info">
-      <label>Email:</label>
-      <p>{{ email }}</p>
-    </div>
-    <div class="profile-info">
-      <label>Адреса:</label>
-      <p>{{ address }}</p>
-    </div>
-    <div class="profile-info">
-      <label>Датум на раѓање:</label>
-      <p>{{ dateOfBirth }}</p>
-    </div>
-    <div class="profile-info">
-      <label>Општина:</label>
-      <p>{{ municipality }}</p>
-    </div>
-    <div class="profile-info">
-      <label>Телефонски број:</label>
-      <p>{{ phoneNumber }}</p>
-    </div>
-
-    <button (click)="saveChanges()" class="save-button">Зачувај промени</button>
-
-  </div>
-  
+  <mat-card class="profile-card">
+    <mat-card-header>
+      <mat-card-title>Профил</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="profile-info">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Име и презиме</mat-label>
+          <input matInput [(ngModel)]="profile.fullName">
+        </mat-form-field>
+      </div>
+      <div class="profile-info">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Емаил</mat-label>
+          <input matInput [(ngModel)]="profile.email">
+        </mat-form-field>
+      </div>
+      <div class="profile-info">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Адреса</mat-label>
+          <input matInput [(ngModel)]="profile.address">
+        </mat-form-field>
+      </div>
+      <div class="profile-info">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Општина</mat-label>
+          <input matInput [(ngModel)]="profile.municipality">
+        </mat-form-field>
+      </div>
+      <div class="profile-info">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Телефонски број</mat-label>
+          <input matInput [(ngModel)]="profile.phoneNumber">
+        </mat-form-field>
+      </div>
+      <div class="profile-info">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Краток опис</mat-label>
+          <input matInput [(ngModel)]="profile.description">
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="saveChanges()">Зачувај промени</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

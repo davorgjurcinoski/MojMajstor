@@ -1,28 +1,39 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfileService } from "../../services/profile.service";
+import { UserProfile } from "../../interfaces/UserProfile";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.scss'
+  styleUrls: ['./profile.component.scss'] // Fix typo: styleUrl -> styleUrls
 })
 export class ProfileComponent implements OnInit {
-  username: string = 'Корисник123';
-  email: string = 'korisnik@example.com';
-  address: string = 'Ул. Пример 12, Скопје';
-  dateOfBirth: string = '01.01.1990';
-  municipality: string = 'Центар';
-  phoneNumber: string = '070/123-456';
+  profile: UserProfile = {
+    fullName: '',
+    email: '',
+    address: '',
+    municipality: '',
+    phoneNumber: '',
+    description: ''
+  };
 
-  constructor() { }
+  constructor(private service: ProfileService,
+              private router: Router) { }
 
   ngOnInit(): void {
+    this.service.getProfile().subscribe(profile => {
+      this.profile = profile;
+    });
   }
-
 
   saveChanges(): void {
-    // Add logic to save changes
-    console.log('Changes saved!');
+    this.service.updateProfile(this.profile).subscribe({
+      next: () => {},
+      error: (error) => console.error(error),
+      complete: () => {
+        this.router.navigate(['/']);
+      }
+    })
   }
-
-
 }

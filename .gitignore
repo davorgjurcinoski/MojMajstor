@@ -21,7 +21,7 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
-.vscode/tasks.json
+frontend/moj-majstor/.vscode/tasks.json
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -40,3 +40,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+
+frontend/moj-majstor/.angular/
+frontend/moj-majstor/dist/
+frontend/moj-majstor/node_modules/
+.idea

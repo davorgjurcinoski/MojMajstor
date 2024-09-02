@@ -1,18 +1,26 @@
 <header>
-    <div class="header-left">
-      <img src="src/assets/images/logo.png" alt="Logo">
-      <h1>
-        <span class="moj">Мој</span><span class="majstor">Мајстор</span>
-      </h1>
-    </div> 
-    <nav>
-      <ul [class.show]="menuOpen">
-        <li><a routerLink="/home" routerLinkActive="active">Почетна</a></li>
-        <li><a routerLink="/profile" routerLinkActive="active">Профил</a></li>
-        <li><a routerLink="/search" routerLinkActive="active">Пребарај</a></li>
-        <li><a routerLink="/about" routerLinkActive="active">За Нас</a></li>
-      </ul>
-    </nav>
-    
-  </header>
-  
+  <div class="header-left">
+    <img ngSrc="/assets/images/logo.png" alt="Logo" height="50" width="50">
+    <h1>
+      <span class="moj">Мој</span><span class="majstor">Мајстор</span>
+    </h1>
+  </div>
+  <nav>
+    <ul [class.show]="menuOpen">
+      <li><a routerLink="/home" routerLinkActive="active">Почетна</a></li>
+      <li><a routerLink="/profile" routerLinkActive="active">Профил</a></li>
+      <li><a routerLink="/search" routerLinkActive="active">Пребарај</a></li>
+      <li><a routerLink="/about" routerLinkActive="active">За Нас</a></li>
+      <ng-container *ngIf="!loggedIn; else loggedInLinks">
+        <li><a (click)="openLoginPopup()">Најави се</a></li>
+        <li><a routerLink="/register">Создај нова сметка</a></li>
+      </ng-container>
+      <ng-template #loggedInLinks>
+        <div class="login-register-container">
+          <li><a (click)="logout()">Одјави се</a></li>
+        </div>
+      </ng-template>
+    </ul>
+  </nav>
+
+</header>

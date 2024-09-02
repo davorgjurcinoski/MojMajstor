@@ -1,0 +1,46 @@
+<div class="register">
+  <form (submit)="signUp()" [formGroup]="signUpForm">
+    <div class="input-group">
+      <mat-form-field>
+        <input matInput placeholder="Име и презиме" type="text" formControlName="fullName" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Емаил" type="text" formControlName="email" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Адреса" type="text" formControlName="address" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Општина</mat-label>
+        <mat-select formControlName="municipality">
+        <mat-option value="aerodrom">Аеродром</mat-option>
+          <mat-option value="butel">Бутел</mat-option>
+          <mat-option value="centar">Центар</mat-option>
+          <mat-option value="gaziBaba">Гази Баба</mat-option>
+          <mat-option value="gjorchePetrov">Ѓорче Петров</mat-option>
+          <mat-option value="karposh">Карпош</mat-option>
+          <mat-option value="kiselaVoda">Кисела Вода</mat-option>
+          <mat-option value="chair">Чаир</mat-option>
+          <mat-option value="saraj">Сарај</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Телефонски број" type="text" formControlName="phoneNumber">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Краток опис" type="text" formControlName="description">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Лозинка" type="password" formControlName="password" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Потврди лозинка" type="password" formControlName="c_password" required>
+      </mat-form-field>
+    </div>
+
+    <div class="button-group">
+      <button mat-raised-button type="submit" [disabled]="!signUpForm.valid">Регистрирај се</button>
+      <button mat-button routerLink="/home">Почетна страна</button>
+    </div>
+  </form>
+</div>
