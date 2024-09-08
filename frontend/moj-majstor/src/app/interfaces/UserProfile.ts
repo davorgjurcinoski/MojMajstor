@@ -1,8 +1,14 @@
+import {WorkerInterface} from "./WorkerInterface";
+
 export interface UserProfile {
   fullName: string,
-  email: string,
-  address: string,
-  municipality: string,
-  phoneNumber: string,
-  description: string
+  email: string
+  worker: WorkerInterface,
+  role: Role,
+  id: number
+}
+
+export enum Role {
+  NORMAL,
+  WORKER
 }

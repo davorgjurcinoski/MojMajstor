@@ -1,28 +1,27 @@
-/* Master List Styles */
 .master-list {
     padding: 2rem;
     background-color: #f9f9f9;
   }
-  
+
   .filters {
     margin-bottom: 2rem;
     display: flex;
     gap: 1rem;
   }
-  
+
   .filters select {
     padding: 0.5rem;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  
+
   .master-cards {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .master-card {
     background-color: #ffffff;
     border: 1px solid #ddd;
@@ -30,11 +29,11 @@
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
+
   .master-card h3 {
     margin-top: 0;
   }
-  
+
   .master-card button {
     background-color: #007bff;
     color: #ffffff;
@@ -44,8 +43,35 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  
+
   .master-card button:hover {
     background-color: #0056b3;
   }
-  
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+mat-form-field {
+  width: 200px;
+}
+
+.page-container {
+  padding: 0 16px;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+mat-form-field {
+  width: 200px;
+}
+
+.master-cards {
+  margin-top: 16px;
+}

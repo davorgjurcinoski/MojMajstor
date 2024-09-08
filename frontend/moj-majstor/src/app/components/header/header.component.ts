@@ -3,6 +3,7 @@ import {LoginComponent} from "../login/login.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
+import {SearchUserComponent} from "../search-user/search-user.component"
 
 @Component({
   selector: 'app-header',
@@ -41,6 +42,18 @@ export class HeaderComponent {
     this.dialog.open(LoginComponent, {
       width: '400px',
       panelClass: 'custom-dialog'
+    });
+  }
+
+  searchUsers(): void {
+    this.dialog.open(SearchUserComponent, {
+      width: '500px',
+      panelClass: 'custom-dialog',
+      data: {
+        isFriendRequest: true,
+        isSuggestion: false,
+        suggestion: undefined,
+      },
     });
   }
 }

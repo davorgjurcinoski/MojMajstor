@@ -1,23 +1,42 @@
-<div class="master-list">
-    <div class="filters">
-      <select [(ngModel)]="selectedCategory">
-        <option value="">Сите Категории</option>
-        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
-      </select>
-      <select [(ngModel)]="selectedMunicipality">
-        <option value="">Сите Општини</option>
-        <option *ngFor="let municipality of municipalities" [value]="municipality">{{ municipality }}</option>
-      </select>
-    </div>
-  
-    <div class="master-cards">
-      <div class="master-card" *ngFor="let master of filteredMasters">
-        <h3>{{ master.name }}</h3>
-        <p>Категорија: {{ master.category }}</p>
-        <p>Општина: {{ master.municipality }}</p>
-        <p>Телефон: {{ master.phone }}</p>
-        <button (click)="showMoreInfo()">Повеќе информации</button>
+<div class="page-container">
+  <mat-card>
+    <mat-card-content>
+      <div class="filter-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Категорија</mat-label>
+          <mat-select [(ngModel)]="selectedCategory" (selectionChange)="applyFilter()">
+            <mat-option value="">Сите Категории</mat-option>
+            <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Општина</mat-label>
+          <mat-select [(ngModel)]="selectedMunicipality" (selectionChange)="applyFilter()">
+            <mat-option value="">Сите Општини</mat-option>
+            <mat-option *ngFor="let municipality of municipalities" [value]="municipality">{{ municipality }}</mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
-    </div>
-  </div>
-  
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="master-cards">
+    <mat-card *ngFor="let user of filteredMasters">
+      <mat-card-header>
+        <mat-card-title>{{ user.fullName }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Категорија: {{ user.worker.category }}</p>
+        <p>Општина: {{ user.worker.municipality }}</p>
+        <p>Телефон: {{ user.worker.phoneNumber }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="showMoreInfo(user.id)">Повеќе информации</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-card>
+
+  <mat-paginator [length]="totalPages * 10" [pageSize]="10" [pageSizeOptions]="[10]" (page)="loadUsers($event.pageIndex)">
+  </mat-paginator>
+</div>

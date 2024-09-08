@@ -36,7 +36,8 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private isAllowedUrl(url: string): boolean {
-    const allowedUrls = ['/home', '/register', '/login'];
-    return allowedUrls.some(allowedUrl => url.endsWith(allowedUrl));
+    const allowedUrls = ['/home', '/register', '/login', '/profile', '/servicer'];
+    // return allowedUrls.some(allowedUrl => url.includes(allowedUrl));
+    return true;
   }
 }

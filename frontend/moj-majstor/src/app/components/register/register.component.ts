@@ -21,9 +21,6 @@ export class RegisterComponent implements OnInit {
     this.signUpForm = this.formBuilder.group({
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      address: ['', Validators.required],
-      municipality: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
       c_password: ['', Validators.required]
     });
@@ -41,9 +38,6 @@ export class RegisterComponent implements OnInit {
     const registerData = {
       fullName: this.signUpForm.controls['fullName'].value,
       email: this.signUpForm.controls['email'].value,
-      address: this.signUpForm.controls['address'].value,
-      municipality: this.signUpForm.controls['municipality'].value,
-      phoneNumber: this.signUpForm.controls['phoneNumber'].value,
       password: this.signUpForm.controls['password'].value
     };
 

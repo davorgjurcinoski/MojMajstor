@@ -24,6 +24,12 @@ import { RegisterComponent } from './components/register/register.component';
 import {MatOption, MatSelect} from "@angular/material/select";
 import {AuthInterceptor} from "./auth.interceptor";
 import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
+import { SearchUserComponent } from './components/search-user/search-user.component';
+import {MatListItem, MatNavList} from "@angular/material/list";
+import { WorkerComponent } from './components/worker/worker.component';
+import { BecomeWorkerComponent } from './components/become-worker/become-worker.component';
+import {MatPaginator} from "@angular/material/paginator";
+import {MatSlider} from "@angular/material/slider";
 
 
 
@@ -37,7 +43,10 @@ import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} fr
     ProfileComponent,
     ServicerComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SearchUserComponent,
+    WorkerComponent,
+    BecomeWorkerComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +65,11 @@ import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} fr
     MatCardTitle,
     MatCardHeader,
     MatCard,
-    MatCardActions
+    MatCardActions,
+    MatNavList,
+    MatListItem,
+    MatPaginator,
+    MatSlider
   ],
   providers: [
     provideAnimationsAsync(),

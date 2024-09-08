@@ -3,10 +3,10 @@ package mk.ukim.finki.mojmajstor.dto;
 import lombok.Data;
 
 @Data
-public class LoginResponseDto {
+public class LoginResponse {
     private String token;
 
-    public LoginResponseDto(String token) {
+    public LoginResponse(String token) {
         this.token = token;
     }
 }

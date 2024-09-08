@@ -8,21 +8,21 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
-  
+
   .servicer-container h2, .servicer-container h3 {
     text-align: center;
     color: #007bff;
     margin-bottom: 1.5rem;
   }
-  
+
   .servicer-info {
     margin-bottom: 1rem;
   }
-  
+
   .servicer-info label {
     font-weight: bold;
   }
-  
+
   .servicer-info p {
     margin: 0;
     padding: 0.5rem 0;
@@ -30,11 +30,11 @@
     border: 1px solid #ddd;
     border-radius: 5px;
   }
-  
+
   .comment-section {
     margin-top: 2rem;
   }
-  
+
   .comment-section textarea {
     width: 100%;
     height: 100px;
@@ -43,14 +43,14 @@
     border-radius: 5px;
     border: 1px solid #ddd;
   }
-  
+
   .comment-section select {
     padding: 0.5rem;
     border-radius: 5px;
     border: 1px solid #ddd;
     margin-bottom: 1rem;
   }
-  
+
   .comment-section button {
     display: block;
     width: 100%;
@@ -63,11 +63,11 @@
     cursor: pointer;
     text-align: center;
   }
-  
+
   .comment-section button:hover {
     background-color: #0056b3;
   }
-  
+
   .comment {
     margin-top: 1.5rem;
     padding: 1rem;
@@ -75,8 +75,41 @@
     border: 1px solid #ddd;
     border-radius: 5px;
   }
-  
+
   .comment p {
     margin: 0.5rem 0;
   }
-  
+
+  .form {
+    width: 100%;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+.reviews-container {
+  margin-top: 20px;
+}
+
+.review-card {
+  margin-bottom: 10px;
+}
+
+.review-card-content {
+  padding: 15px;
+}
+
+mat-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.review-rating {
+  margin-top: 5px;
+  font-style: italic;
+  color: #555;
+}

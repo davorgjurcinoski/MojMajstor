@@ -22,16 +22,13 @@ public class User {
     @Column(name = "full_name")
     private String fullName;
 
-    private String address;
-
-    private String municipality;
-
-    private String phoneNumber;
-
     private String password;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private String description;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "worker_id")
+    private Worker worker;
+
 }

@@ -16,33 +16,42 @@
           <input matInput [(ngModel)]="profile.email">
         </mat-form-field>
       </div>
-      <div class="profile-info">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Адреса</mat-label>
-          <input matInput [(ngModel)]="profile.address">
-        </mat-form-field>
-      </div>
-      <div class="profile-info">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Општина</mat-label>
-          <input matInput [(ngModel)]="profile.municipality">
-        </mat-form-field>
-      </div>
-      <div class="profile-info">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Телефонски број</mat-label>
-          <input matInput [(ngModel)]="profile.phoneNumber">
-        </mat-form-field>
-      </div>
-      <div class="profile-info">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Краток опис</mat-label>
-          <input matInput [(ngModel)]="profile.description">
-        </mat-form-field>
+      <div *ngIf="profile.worker != null">
+        <div class="profile-info">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Адреса</mat-label>
+            <input matInput [(ngModel)]="profile.worker.address">
+          </mat-form-field>
+        </div>
+        <div class="profile-info">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Општина</mat-label>
+            <input matInput [(ngModel)]="profile.worker.municipality">
+          </mat-form-field>
+        </div>
+        <div class="profile-info">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Телефонски број</mat-label>
+            <input matInput [(ngModel)]="profile.worker.phoneNumber">
+          </mat-form-field>
+        </div>
+        <div class="profile-info">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Краток опис</mat-label>
+            <input matInput [(ngModel)]="profile.worker.description">
+          </mat-form-field>
+        </div>
       </div>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="saveChanges()">Зачувај промени</button>
-    </mat-card-actions>
+    <div style="display: flex">
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="saveChanges()">Зачувај промени</button>
+      </mat-card-actions>
+      <div *ngIf="profile.worker == null">
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="becomeWorker()">Стани мајстор</button>
+        </mat-card-actions>
+      </div>
+    </div>
   </mat-card>
 </div>

@@ -1,49 +1,49 @@
-<div class="servicer-container">
-    <h2>Сервисер</h2>
-    <div class="servicer-info">
-      <label>Име:</label>
-      <p>{{ name }}</p>
-    </div>
-    <div class="servicer-info">
-      <label>Email:</label>
-      <p>{{ email }}</p>
-    </div>
-    <div class="servicer-info">
-      <label>Мобилен телефон:</label>
-      <p>{{ mobile }}</p>
-    </div>
-    <div class="servicer-info">
-      <label>Категорија:</label>
-      <p>{{ category }}</p>
-    </div>
-    <div class="servicer-info">
-      <label>Општина:</label>
-      <p>{{ municipality }}</p>
-    </div>
-    <div class="servicer-info">
-      <label>Краток опис:</label>
-      <p>{{ description }}</p>
-    </div>
-    <div class="servicer-info">
-      <label>Просечна оцена:</label>
-      <p>{{ averageRating }}</p>
-    </div>
-  
-    <h3>Напиши коментар и оцена</h3>
-    <div class="comment-section">
-      <textarea [(ngModel)]="newComment" placeholder="Вашиот коментар"></textarea>
-      <label>Оцена:</label>
-      <select [(ngModel)]="newRating">
-        <option *ngFor="let rating of ratings" [value]="rating">{{ rating }}</option>
-      </select>
-      <button (click)="addComment()">Додади коментар</button>
-    </div>
-  
-    <h3>Коментари и оцени</h3>
-    <div *ngFor="let comment of comments" class="comment">
-      <p><strong>{{ comment.username }}</strong>:</p>
-      <p>{{ comment.text }}</p>
-      <p>Оцена: {{ comment.rating }}</p>
+<div *ngIf="profile$ | async as profile" class="servicer-container">
+  <mat-card class="profile-card">
+    <mat-card-header>
+      <mat-card-title>{{ profile.fullName }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Емаил:</strong> {{ profile.email }}</p>
+      <p><strong>Мобилен телефон:</strong> {{ profile.worker.phoneNumber }}</p>
+      <p><strong>Категорија:</strong> {{ profile.worker.category }}</p>
+      <p><strong>Општина:</strong> {{ profile.worker.municipality }}</p>
+      <p><strong>Краток опис:</strong> {{ profile.worker.description }}</p>
+      <p><strong>Просечна оценка:</strong> {{ profile.worker.averageRating }}</p>
+    </mat-card-content>
+    <ng-container *ngIf="isLoggedIn">
+      <mat-card-actions class="actions">
+        <form (ngSubmit)="addComment(profile.id)" #feedbackForm="ngForm" class="form">
+          <div class="actions">
+            <mat-form-field appearance="fill">
+              <mat-label>Рејтинг</mat-label>
+              <mat-select [(ngModel)]="feedback.rating" name="rating">
+                <mat-option *ngFor="let rate of ratings" [value]="rate">{{ rate }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Коментар</mat-label>
+              <textarea matInput [(ngModel)]="feedback.comment" name="comment"></textarea>
+            </mat-form-field>
+          </div>
+          <button mat-raised-button color="primary" type="submit">Испрати</button>
+        </form>
+      </mat-card-actions>
+    </ng-container>
+  </mat-card>
+  <div *ngIf="reviews$ | async as reviews" class="reviews-container">
+    <h3>Коментари</h3>
+    <div *ngFor="let review of reviews" class="review-card">
+      <mat-card class="review-card-content">
+        <mat-card-header>
+          <mat-card-title>Корисник: {{ review.fromName }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Оцена: {{ review.rating }}</p>
+          <p>Коментар: {{ review.comment }}</p>
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
-  
+
+</div>
