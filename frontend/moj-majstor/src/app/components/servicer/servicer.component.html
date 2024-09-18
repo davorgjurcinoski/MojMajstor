@@ -33,7 +33,7 @@
   </mat-card>
   <div *ngIf="reviews$ | async as reviews" class="reviews-container">
     <h3>Коментари</h3>
-    <div *ngFor="let review of reviews" class="review-card">
+    <div *ngFor="let review of reviews.slice().reverse()" class="review-card">
       <mat-card class="review-card-content">
         <mat-card-header>
           <mat-card-title>Корисник: {{ review.fromName }}</mat-card-title>

@@ -24,6 +24,7 @@ public class ReviewController {
 
     @PostMapping
     ResponseEntity<?> review(Principal principal, @RequestBody ReviewRequest review) {
+        System.out.println(principal);
         User user = this.userService.findByEmailOrNull(principal.getName());
         reviewService.review(review, user.getId(), user.getFullName());
         userService.updateAverageRating((long)review.getReviewingId());

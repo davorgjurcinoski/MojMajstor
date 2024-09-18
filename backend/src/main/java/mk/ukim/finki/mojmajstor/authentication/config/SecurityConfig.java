@@ -4,6 +4,7 @@ import mk.ukim.finki.mojmajstor.authentication.authenticationProvider.CustomAuth
 import mk.ukim.finki.mojmajstor.authentication.filters.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.Customizer;
@@ -45,10 +46,11 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/profile/**").permitAll()
-                        .requestMatchers("/api/review/**").permitAll()
-                        .requestMatchers("/api/review**").permitAll()
                         .requestMatchers("/api/**").permitAll()
-//                        .anyRequest().authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/review").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/review").permitAll()
+                        .requestMatchers("/api/profile/**").permitAll()
+                        .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
