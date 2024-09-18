@@ -24,14 +24,15 @@ public class ProfileController {
     private UserService service;
 
     @GetMapping
-    public ResponseEntity<?> getProfile(@RequestParam(name = "id", required = false) Long id, Principal principal) {
-        User user;
-        if (id != null) {
-            user = service.findById(id);
-        } else {
-            String username = principal.getName();
-            user = service.findByEmailOrNull(username);
-        }
+    public ResponseEntity<?> getProfile(@RequestParam(name = "id", required = false) Long id) {
+        User user = service.findById(id);
+        UserResponse profile = userToResponse(user);
+        return ResponseEntity.ok(profile);
+    }
+
+    @GetMapping("/myprofile")
+    public ResponseEntity<?> getOwnProfile(Principal principal) {
+        User user = service.findByEmailOrNull(principal.getName());
         UserResponse profile = userToResponse(user);
         return ResponseEntity.ok(profile);
     }
@@ -42,7 +43,7 @@ public class ProfileController {
                 .filter(user -> user.getWorker() != null)
                 .map(this::userToResponse)
                 .toList();
-        if(principal != null) {
+        if (principal != null) {
             User self = service.findByEmailOrNull(principal.getName());
             users = users.stream().filter(user -> !user.equals(userToResponse(self))).toList();
         }
@@ -61,7 +62,7 @@ public class ProfileController {
                 .filter(user -> user.getWorker() != null)
                 .map(this::userToResponse)
                 .collect(Collectors.toList());
-        if(principal != null) {
+        if (principal != null) {
             User self = service.findByEmailOrNull(principal.getName());
             userResponses = userResponses.stream().filter(user -> !user.equals(userToResponse(self))).toList();
         }
@@ -70,7 +71,6 @@ public class ProfileController {
 
         return ResponseEntity.ok(responsePage);
     }
-
 
 
     @PostMapping

@@ -27,9 +27,9 @@
         <mat-card-title>{{ user.fullName }}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <p>Категорија: {{ user.worker.category }}</p>
-        <p>Општина: {{ user.worker.municipality }}</p>
-        <p>Телефон: {{ user.worker.phoneNumber }}</p>
+        <p>Категорија: {{ user.worker?.category }}</p>
+        <p>Општина: {{ user.worker?.municipality }}</p>
+        <p>Телефон: {{ user.worker?.phoneNumber }}</p>
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button color="primary" (click)="showMoreInfo(user.id)">Повеќе информации</button>

@@ -18,7 +18,7 @@ export class ProfileService {
   getProfile(id: number | null): Observable<UserProfile> {
     return this.http.get<UserProfile>(`${this.apiUrl}?id=${id}`).pipe(
       map(user => {
-        if (typeof user.worker.category === 'string') {
+        if (typeof user.worker?.category === 'string') {
           const municipality = user.worker.municipality as unknown as keyof typeof Municipality;
           const category = user.worker.category as unknown as keyof typeof Category;
           user.worker.category = Category[category];
@@ -29,11 +29,27 @@ export class ProfileService {
     );
   }
 
+  getMyProfile(): Observable<UserProfile> {
+    return this.http.get<UserProfile>(`${this.apiUrl}/myprofile`).pipe(
+      map(user => {
+        console.log('Original user data:', user);
+        if (user.worker && typeof user.worker.category === 'string') {
+          const municipality = user.worker.municipality as unknown as keyof typeof Municipality;
+          const category = user.worker.category as unknown as keyof typeof Category;
+          user.worker.category = Category[category];
+          user.worker.municipality = Municipality[municipality];
+        }
+        console.log('Transformed user data:', user);
+        return user;
+      })
+    );
+  }
+
 
   searchUsers(searchTerm: string): Observable<UserProfile[]> {
     return this.http.get<UserProfile[]>(`/api/profile/search?search=${searchTerm}`).pipe(
       map(users => users.map(user => {
-        if (typeof user.worker.category === 'string') {
+        if (typeof user.worker?.category === 'string') {
           const municipality = user.worker.municipality as unknown as keyof typeof Municipality;
           const category = user.worker.category as unknown as keyof typeof Category;
           user.worker.category = Category[category];
@@ -48,7 +64,7 @@ export class ProfileService {
     return this.http.get<Page<UserProfile>>(`/api/profile/searchPageable?search=${searchTerm}&page=${page}&size=${size}`).pipe(
       map(responsePage => {
         const users = responsePage.content.map(user => {
-          if (typeof user.worker.category === 'string') {
+          if (typeof user.worker?.category === 'string') {
             const municipality = user.worker.municipality as unknown as keyof typeof Municipality;
             const category = user.worker.category as unknown as keyof typeof Category;
             user.worker.category = Category[category];

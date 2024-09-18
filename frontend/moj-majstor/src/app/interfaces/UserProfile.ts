@@ -3,7 +3,7 @@ import {WorkerInterface} from "./WorkerInterface";
 export interface UserProfile {
   fullName: string,
   email: string
-  worker: WorkerInterface,
+  worker: WorkerInterface | null,
   role: Role,
   id: number
 }

@@ -44,8 +44,8 @@ export class SearchComponent implements OnInit {
 
   get filteredMasters() {
     return this.users.filter(master =>
-      (this.selectedCategory === '' || master.worker.category === this.selectedCategory) &&
-      (this.selectedMunicipality === '' || master.worker.municipality === this.selectedMunicipality)
+      (this.selectedCategory === '' || master.worker?.category === this.selectedCategory) &&
+      (this.selectedMunicipality === '' || master.worker?.municipality === this.selectedMunicipality)
     );
   }
 

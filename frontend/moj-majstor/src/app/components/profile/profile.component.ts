@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProfileService} from "../../services/profile.service";
-import {UserProfile, Role} from "../../interfaces/UserProfile";
+import {UserProfile} from "../../interfaces/UserProfile";
 import {Router} from "@angular/router";
 
 @Component({
@@ -9,16 +9,14 @@ import {Router} from "@angular/router";
   styleUrls: ['./profile.component.scss'] // Fix typo: styleUrl -> styleUrls
 })
 export class ProfileComponent implements OnInit {
-  profile!: UserProfile;
+  profile!: any;
 
   constructor(private service: ProfileService,
               private router: Router) {
   }
 
   ngOnInit(): void {
-    this.service.getProfile(null).subscribe(profile => {
-      this.profile = profile;
-    });
+    this.getMyProfile();
   }
 
   saveChanges(): void {
@@ -31,6 +29,15 @@ export class ProfileComponent implements OnInit {
       }
     })
   }
+
+  getMyProfile(): void {
+    this.service.getMyProfile().subscribe({
+      next: (profile: any) => {
+        this.profile = profile
+      }
+    })
+  }
+
   becomeWorker(): void {
     this.router.navigate(['becomeWorker'])
   }

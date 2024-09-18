@@ -50,6 +50,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/review").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/review").permitAll()
                         .requestMatchers("/api/profile/**").permitAll()
+                        .requestMatchers("/api/profile/myprofile").authenticated()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
